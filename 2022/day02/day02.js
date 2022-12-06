@@ -1,8 +1,6 @@
 "use strict";
-
-const data = `A Y
-B X
-C Z`
+import input from "./input.js";
+const data = input
   .split("\n")
   .map((a) =>
     a
@@ -16,35 +14,35 @@ C Z`
   .map((x) => x.split(" ").map(Number));
 console.log(data);
 
-// const opponent = {
-//   rock: 1,
-//   paper: 2,
-//   scissors: 3,
-// };
+const opponent = {
+  rock: 1,
+  paper: 2,
+  scissors: 3,
+};
 
-// const player = {
-//   rock: 1,
-//   paper: 2,
-//   scissors: 3,
-// };
+const player = {
+  rock: 1,
+  paper: 2,
+  scissors: 3,
+};
 
-function game(opponent, player) {
-  if (opponent === player) {
-    return player + 3;
+function game(opponentM, playerM) {
+  if (opponentM === playerM) {
+    return playerM + 3;
   } else if (
-    opponent.rock === player.paper ||
-    opponent.paper === player.scissors ||
-    opponent.scissors === player.rock
+    (opponentM === opponent.rock && playerM === player.paper) ||
+    (opponentM === opponent.paper && playerM === player.scissors) ||
+    (opponentM === opponent.scissors && playerM === player.rock)
   ) {
-    return player + 6;
+    return playerM + 6;
   }
-  return player;
+  return playerM;
 }
-// let score = 0;
-let score = [];
+let score = 0;
+// let score = [];
 
 for (const line of data) {
-  //   score += game(line[0], line[1]);
-  score.push(game(line[0], line[1]));
+  score += game(line[0], line[1]);
+  //   score.push(game(line[0], line[1]));
 }
 console.log(score);
