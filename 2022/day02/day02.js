@@ -28,26 +28,23 @@ console.log(data);
 //   scissors: 3,
 // };
 
-function convert() {
-  if (opponent === 1) {
-  }
-}
-
-function game(opponentM, playerM) {
-  if (opponentM === playerM) {
-    return playerM + 3;
+function game(opponent, player) {
+  if (opponent === player) {
+    return player + 3;
   } else if (
-    opponentM.rock === playerM.paper ||
-    opponentM.paper === playerM.scissors ||
-    opponentM.scissors === playerM.rock
+    opponent.rock === player.paper ||
+    opponent.paper === player.scissors ||
+    opponent.scissors === player.rock
   ) {
-    return playerM + 6;
+    return player + 6;
   }
-  return playerM;
+  return player;
 }
+// let score = 0;
 let score = [];
 
 for (const line of data) {
+  //   score += game(line[0], line[1]);
   score.push(game(line[0], line[1]));
 }
 console.log(score);
